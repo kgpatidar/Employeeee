@@ -1,0 +1,25 @@
+/* Add user */
+.adduser-container {
+  padding-top: 50px;
+  align-items: center;
+  padding-left: 30px;
+}
+
+/* Input Field  */
+.adduser-container > form > div > input {
+  padding: 5px;
+  width: 40%;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+/* Submit Button */
+.adduser-sumit-btn {
+  padding: 5px;
+  background-color: transparent;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+}

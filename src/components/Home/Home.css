@@ -1,0 +1,53 @@
+/* Home Page Styling */
+.home-container {
+  padding: 20px;
+}
+
+/* Search Bar */
+.home-searchbar-container {
+  border: 1px solid #eee;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+  display: flex;
+}
+
+.home-searchbar-container > input {
+  border: 0;
+  width: 100%;
+  outline: none;
+}
+
+.home-searchbar-icon {
+  height: 1.1em;
+  padding: 2.5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+/*********/
+
+/* Add User Button */
+.home-add-btn-container {
+  text-align: right;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.home-add-btn-container > .home-add-btn {
+  background-color: aquamarine;
+  text-decoration: none;
+  font-weight: bold;
+  outline: none;
+  border: 0;
+  padding: 7px;
+  padding-left: 20px;
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.home-add-btn-container > .home-add-btn:hover {
+  transition: 0.3s linear;
+  transform: scale(0.95);
+}
+
+/******/

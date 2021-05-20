@@ -1,0 +1,13 @@
+table {
+  border-spacing: 0;
+  margin-top: 10px;
+}
+
+thead {
+  background-color: #eeeeee;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
