@@ -1,6 +1,5 @@
 import axios from "axios";
 import {
-  LOGIN_USER,
   GET_USERS,
   DELETE_USER,
   ADD_USER,
@@ -9,28 +8,8 @@ import {
   LOADING,
 } from "./types";
 
-// LOGIN USER action
-export const loginUser = (data) => (dispatch) => {
-  dispatch(Loader());
-  axios
-    .post("https://reqres.in/api/login", data)
-    .then((res) => {
-      dispatch({
-        type: LOGIN_USER,
-      });
-      dispatch(loadUser());
-    })
-    .catch((err) => {
-      alert("Wrong Credentials");
-      dispatch({
-        type: "ERROR",
-      });
-    });
-};
-
 //LOADER FOR USER
 export const Loader = () => {
-  console.log("Loaded");
   return {
     type: LOADING,
   };
@@ -49,8 +28,8 @@ export const loadUser = () => (dispatch) => {
           name: val.first_name + " " + val.last_name,
           email: val.email,
           username: val.email.split("@")[0],
-          phone: "123456789",
           createdDate: new Date().toLocaleDateString(),
+          avatar: val.avatar,
         });
       });
       dispatch({
@@ -78,25 +57,73 @@ export const getUsers = () => {
 };
 
 //DELETING USER FROM LIST
-export const deleteUser = (id) => {
-  return {
-    type: DELETE_USER,
-    payload: id,
-  };
+export const deleteUser = (id) => (dispatch) => {
+  dispatch(startLoading());
+  axios
+    .delete("https://reqres.in/api/users")
+    .then((res) => {
+      dispatch({
+        type: DELETE_USER,
+        payload: id,
+      });
+      alert("User Deleted Succesfully");
+    })
+    .catch((err) => {
+      alert(err.message);
+      dispatch({
+        type: "ERROR",
+      });
+    });
 };
 
 //ADDING USER FROM LIST
-export const addUser = (data) => {
-  return {
-    type: ADD_USER,
-    payload: data,
-  };
+export const addUser = (data) => (dispatch) => {
+  dispatch(startLoading());
+  axios
+    .post("https://reqres.in/api/users", { name: data.name, job: "leader" })
+    .then((res) => {
+      dispatch({
+        type: ADD_USER,
+        payload: {
+          ...data,
+          avatar: "https://reqres.in/img/faces/7-image.jpg",
+        },
+      });
+      alert("User Added Succesfully");
+    })
+    .catch((err) => {
+      alert(err.message);
+      dispatch({
+        type: "ERROR",
+      });
+    });
 };
 
 //EDITING USER DETAIL
-export const editUser = (data) => {
+export const editUser = (data) => (dispatch) => {
+  dispatch(startLoading());
+  axios
+    .put("https://reqres.in/api/users", { name: data.name, job: "leader" })
+    .then((res) => {
+      dispatch({
+        type: EDIT_USER,
+        payload: {
+          ...data,
+          avatar: "https://reqres.in/img/faces/7-image.jpg",
+        },
+      });
+      alert("User Edited Succesfully");
+    })
+    .catch((err) => {
+      alert(err.message);
+      dispatch({
+        type: "ERROR",
+      });
+    });
+};
+
+export const startLoading = () => {
   return {
-    type: EDIT_USER,
-    payload: data,
+    type: "LOADING",
   };
 };

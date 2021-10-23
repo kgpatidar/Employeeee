@@ -10,6 +10,13 @@
   margin-bottom: 10px;
   padding: 5px;
   display: flex;
+  background-color: #fff;
+}
+
+.home-head-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .home-searchbar-container > input {
@@ -34,7 +41,8 @@
 }
 
 .home-add-btn-container > .home-add-btn {
-  background-color: aquamarine;
+  background-color: #004b3c;
+  color: #fff;
   text-decoration: none;
   font-weight: bold;
   outline: none;
@@ -43,11 +51,31 @@
   padding-left: 20px;
   padding-right: 20px;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 .home-add-btn-container > .home-add-btn:hover {
   transition: 0.3s linear;
-  transform: scale(0.95);
+  background-color: #02997b;
 }
 
 /******/
+
+.loading-class {
+  width: 50px;
+  height: 50px;
+  background: rgb(174, 95, 248);
+  -webkit-animation: spin 2s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg) scale(0.3);
+  }
+  50% {
+    transform: rotate(360deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(0deg) scale(0.3);
+  }
+}

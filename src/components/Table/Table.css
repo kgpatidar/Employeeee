@@ -1,13 +1,58 @@
-table {
-  border-spacing: 0;
-  margin-top: 10px;
+.user-table-container {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-thead {
-  background-color: #eeeeee;
+.user-table-container thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
 }
 
-td {
-  padding: 10px;
-  border-bottom: 1px solid #eee;
+.user-table-container th,
+.user-table-container td {
+  padding: 15px 15px;
+}
+
+.user-table-container tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.user-table-container tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.user-table-container tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.user-table-container tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+
+.table-row-child-container {
+  background-color: whitesmoke;
+}
+
+.table-row-child-container > td {
+  background-color: white;
+  padding: 14px;
+  border-bottom: 1px solid #000;
+}
+
+.table-name-col {
+  font-weight: 600;
+  color: #004b3c;
+  display: flex;
+  align-items: center;
+}
+
+.table-edit-action {
+  text-decoration: none;
+  font-weight: 600;
 }

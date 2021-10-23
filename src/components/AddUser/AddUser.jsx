@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Redirect, useParams } from "react-router";
+import { Link } from "react-router-dom";
 import { addUser, editUser } from "../../redux/actions/userAction";
 import "./AddUser.css";
 
@@ -42,13 +43,15 @@ const AddUser = (props) => {
 
   //SUBMITING FOR USER
   const handleSubmit = () => {
-    if (isNew) {
+    const { name, username, email } = addData;
+    if (name.length == 0 || username.length == 0 || email.length == 0) {
+    } else if (isNew) {
       props.addUser(addData);
+      setDone(true);
     } else {
       props.editUser(addData);
+      setDone(true);
     }
-
-    setDone(true);
   };
 
   //IF TASK IS COMPLETE REDIRECT TO {HOME} PAGE
@@ -57,78 +60,55 @@ const AddUser = (props) => {
   }
 
   return (
-    <div className="adduser-container" id="AddUser-test-id">
-      <header>
-        <h1>{heading}</h1>
-      </header>
-
-      <form>
-        {/* NAME */}
-        <div>
-          <label>Name</label>
-          <br></br>
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter Name"
-            value={addData.name}
-            onChange={handleChange}
-            required
-          />
+    <div class="container">
+      <div class="card">
+        <div class="card-image">
+          <h2 class="card-heading">
+            Get started
+            <small>Update your users</small>
+          </h2>
         </div>
-
-        {/* USERNAME */}
-        <div>
-          <label>Username</label>
-          <br></br>
-          <input
-            type="text"
-            name="username"
-            placeholder="Enter Username"
-            value={addData.username}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        {/* EMAIL */}
-        <div>
-          <label>Email</label>
-          <br></br>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter Email"
-            value={addData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        {/* PHONE */}
-        <div>
-          <label>Phone</label>
-          <br></br>
-          <input
-            type="text"
-            name="phone"
-            placeholder="Enter Phone"
-            value={addData.phone}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        {/* SUBMIT BUTTON OF FORM */}
-        <button
-          id="adduser-btn-id"
-          type="submit"
-          className="adduser-sumit-btn"
-          onClick={handleSubmit}
-        >
-          Submit
-        </button>
-      </form>
+        <form class="card-form">
+          <div class="input">
+            <input
+              type="text"
+              name="name"
+              placeholder="Enter Name"
+              value={addData.name}
+              onChange={handleChange}
+              required
+              class="input-field"
+            />
+          </div>
+          <div class="input">
+            <input
+              type="text"
+              name="username"
+              placeholder="Enter Username"
+              value={addData.username}
+              onChange={handleChange}
+              required
+              class="input-field"
+            />
+          </div>
+          <div class="input">
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter Email"
+              value={addData.email}
+              onChange={handleChange}
+              required
+              class="input-field"
+            />
+          </div>
+          <div class="action">
+            <button class="action-button" onClick={handleSubmit}>
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

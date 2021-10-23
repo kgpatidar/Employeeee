@@ -18,6 +18,11 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case "START_LOADING":
+      return {
+        ...state,
+        isLoading: !state.isLoading,
+      };
     case LOGIN_USER:
       return {
         ...state,
@@ -35,6 +40,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         users: state.users.filter((user) => user.id !== action.payload),
+        isLoading: false,
       };
 
     // ADDING USER
@@ -43,6 +49,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         users: [action.payload, ...state.users],
+        isLoading: false,
       };
 
     //MODIFING DATA FOR SAME KEY
@@ -53,6 +60,7 @@ export default function (state = initialState, action) {
       state.users[index] = action.payload;
       return {
         ...state,
+        isLoading: false,
       };
 
     case LOADING:
